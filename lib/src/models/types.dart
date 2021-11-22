@@ -43,6 +43,8 @@ class WebInfo extends InfoBase {
   /// Video URL, if present any in the link.
   final String video;
 
+  final String? profilePictureUrl;
+
   /// Creates [WebInfo]
   WebInfo({
     required this.description,
@@ -52,5 +54,6 @@ class WebInfo extends InfoBase {
     required this.title,
     required this.type,
     required this.video,
+    this.profilePictureUrl,
   });
 }

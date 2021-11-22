@@ -14,10 +14,10 @@ class TwitterScrapper {
       htmlElement.innerHtml = scrappedData['html'];
 
       final baseUrl = LinkPreviewScrapper.getBaseUrl(doc, url);
+      final profilePicture = LinkPreviewScrapper.getAttrOfDocElement(
+          doc, "meta[property='og:image']", 'content');
 
       final image = [
-        LinkPreviewScrapper.getAttrOfDocElement(
-            doc, "meta[property='og:image']", 'content'),
         LinkPreviewScrapper.getAttrOfDocElement(
             doc, "meta[property='og:image:user_generated']", 'content'),
         'https://help.twitter.com/content/dam/help-twitter/twitter-logo.png',
@@ -44,6 +44,7 @@ class TwitterScrapper {
         video: video ?? '',
         title: '${scrappedData['author_name']} on Twitter',
         type: LinkPreviewType.twitter,
+        profilePictureUrl: profilePicture,
       );
     } catch (e) {
       print('Twitter scrapper failure Error: $e');
